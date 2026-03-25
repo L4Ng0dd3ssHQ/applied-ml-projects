@@ -11,9 +11,11 @@ url = f"https://urlhaus-api.abuse.ch/v2/files/exports/{URLHAUS_KEY}/full.csv.zip
 
 #send request
 response = requests.get(url)
-#status check
+
 if response.status_code == 200:
-    print("Download successful")
+    save_path = "../data/raw/urlhaus_full.csv.zip"
+    with open(save_path, "wb") as f:
+        f.write(response.content)
+    print(f"File saved to {save_path}")
 else:
     print(f"Failed - status code: {response.status_code}")
-    
