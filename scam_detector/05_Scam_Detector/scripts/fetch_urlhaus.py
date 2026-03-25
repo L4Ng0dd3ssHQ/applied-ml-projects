@@ -20,7 +20,7 @@ if response.status_code == 200:
     print(f"File saved to {save_path}")
 
     with zipfile.ZipFile(save_path, "r") as zip_ref:
-    zip_ref.extractall("../data/raw/")  
+        zip_ref.extractall("../data/raw/")  
     print("File extracted")
 else:
     print(f"Failed - status code: {response.status_code}")
